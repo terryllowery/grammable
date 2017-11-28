@@ -9,6 +9,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 
+# User authentication with devise
+gem 'devise'
 # Simple forms gem
 gem 'simple_form'
 
