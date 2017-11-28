@@ -5,7 +5,19 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 
+# Simple forms gem
+gem 'simple_form'
+
+gem 'popper_js', '~> 1.11.1'
+# Bootstrap gem
+gem 'bootstrap', '4.0.0.alpha6'
+# jquery
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
