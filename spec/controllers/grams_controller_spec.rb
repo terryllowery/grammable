@@ -2,6 +2,21 @@ require 'rails_helper'
 
 RSpec.describe GramsController, type: :controller do
 
+	describe "grams#edit action" do
+
+		it "should successfully show the edit form if the gram is found" do
+			gram = FactoryBot.create(:gram)
+			get :edit, params: { id: gram.id }
+			expect(response).to have_http_status(:success)
+		end
+
+		it "should show a 404 when editing a gram that is not found" do
+			get :edit, params: { id: 'TOCAT' }
+			expect(response).to have_http_status(:not_found)
+		end
+
+	end
+
 	describe "grams#show action" do
 		it "should successfully show gram if it matches" do
 			gram = FactoryBot.create(:gram)
