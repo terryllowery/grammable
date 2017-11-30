@@ -7,6 +7,7 @@ end
 
 # Fog for AWS
 gem 'fog-aws'
+#gem 'carrierwave-aws'
 
 # Figaro to keep secrets secure
 gem 'figaro'
