@@ -83,6 +83,6 @@ test:
 #
 production:
   <<: *default
-  database: grammable_production
-  username: grammable
-  password: <%= ENV['GRAMMABLE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
