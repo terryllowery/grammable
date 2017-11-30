@@ -53,7 +53,7 @@ class GramsController < ApplicationController
 
 	private
 	def grams_params
-		params.require(:gram).permit(:message)
+		params.require(:gram).permit(:message, :picture)
 	end
 
 	def render_not_found
