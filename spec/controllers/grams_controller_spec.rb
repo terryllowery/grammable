@@ -2,6 +2,33 @@ require 'rails_helper'
 
 RSpec.describe GramsController, type: :controller do
 
+	describe "grams#destroy action" do
+
+		it "should allow a user to destroy a gram" do
+
+			# A gram needs to exist in our database.
+			# When someone performs a DELETE HTTP request to a URL that looks like /grams/:id.
+			# Our server should result in a redirect to the root path.
+			# The gram should no longer be inside our database.
+
+			gram = FactoryBot.create(:gram)
+			delete :destroy, params: { id: gram.id }
+			expect(response).to redirect_to root_path
+			gram = Gram.find_by_id(gram.id)
+			expect(gram).to eq(nil)
+		end
+
+		it "should return a 404 when user tries to destroy a gram id not in database" do
+
+			# When a user performs a DELETE HTTP request to a URL that looks like /grams/NOTAVALUE.
+			# Our server should result in the HTTP response code of 404 Not Found.
+
+			delete :destroy, params: {id: "NOTAVALUE"}
+			expect(response).to have_http_status(:not_found)
+		end
+
+	end
+
 	describe "grams#update action" do
 
 		it "should allow successful updates on gram" do
@@ -57,6 +84,7 @@ RSpec.describe GramsController, type: :controller do
 
 	describe "grams#index" do
 		it "Should open page successfully" do
+			grams = FactoryBot.create(:gram)
 			get :index
 			expect(response).to have_http_status(:success)
 		end
